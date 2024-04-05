@@ -1,4 +1,4 @@
-package org.d3if3139.mobpro1
+package org.d3if3139.assessment1
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,37 +10,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.d3if3139.mobpro1.ui.theme.FitBurnTheme
+import org.d3if3139.assessment1.navigation.SetupNavGraph
+import org.d3if3139.assessment1.typography.AppTypography
+import org.d3if3139.assessment1.ui.theme.FitBurnTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FitBurnTheme {
+            FitBurnTheme(typography = AppTypography.typography) {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    SetupNavGraph()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FitBurnTheme {
-        Greeting("Android")
     }
 }

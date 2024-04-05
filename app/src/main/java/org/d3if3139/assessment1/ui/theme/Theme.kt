@@ -1,9 +1,10 @@
-package org.d3if3139.mobpro1.ui.theme
+package org.d3if3139.assessment1.ui.theme
 
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -41,6 +42,7 @@ private val LightColorScheme = lightColorScheme(
 fun FitBurnTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
+    typography: Typography,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {

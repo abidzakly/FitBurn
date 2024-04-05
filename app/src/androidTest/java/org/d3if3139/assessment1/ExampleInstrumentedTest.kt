@@ -1,4 +1,4 @@
-package org.d3if3139.mobpro1
+package org.d3if3139.assessment1
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

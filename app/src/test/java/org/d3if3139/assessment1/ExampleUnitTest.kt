@@ -1,4 +1,4 @@
-package org.d3if3139.mobpro1
+package org.d3if3139.assessment1
 
 import org.junit.Test
 

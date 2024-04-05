@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FitBurn</string>
+    <string name="about">About</string>
+    <string name="app_description">Level up your fitness journey with FitBurn, the all-inclusive app designed for everyone! Whether you\'re a man or woman, FitBurn empowers you to track your progress with ease. Calculate burned calories during workouts to stay motivated and measure results. Gain valuable body insights with the built-in Body Mass Index (BMI) calculator. Plus, keep your screen lit during exercise with the always-on option, ensuring a seamless workout experience. Download FitBurn today and unlock a healthier, happier you!</string>
+    <string name="back">Back</string>
+    <string name="list_empty">List is Empty!</string>
 </resources>

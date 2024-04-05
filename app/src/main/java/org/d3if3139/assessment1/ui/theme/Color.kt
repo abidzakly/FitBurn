@@ -1,4 +1,4 @@
-package org.d3if3139.mobpro1.ui.theme
+package org.d3if3139.assessment1.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
