@@ -75,7 +75,7 @@ fun CalorieScreen(navController: NavController, typeId: Int, genderId: Int) {
 
 @Composable
 fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
-    val met by rememberSaveable { mutableFloatStateOf(3.0F) }
+    var met by rememberSaveable { mutableFloatStateOf(0f) }
 
     var weight by rememberSaveable { mutableStateOf("") }
     var weightError by rememberSaveable { mutableStateOf(false) }
@@ -84,12 +84,25 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
     var durationError by rememberSaveable { mutableStateOf(false) }
 
     var category by rememberSaveable { mutableStateOf("") }
+    var gender by rememberSaveable { mutableStateOf("") }
 
     when {
         typeId == 1 -> category = "Abs Workout"
         typeId == 2 -> category = "Chest Workout"
         typeId == 3 -> category = "Arm Workout"
     }
+    when {
+        genderId == 1 -> {
+            gender = "Men"
+            met = 3.5f
+        }
+
+        genderId == 2 -> {
+            gender = "Women"
+            met = 3.0f
+        }
+    }
+
 
     var caloriePerMinute by rememberSaveable {
         mutableFloatStateOf(0f)
@@ -171,7 +184,7 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
                             caloriePerMinute.toString(),
                             duration,
                             calorieTotal,
-                            category
+                            category + " " + gender
                         )
                     )
                 },
@@ -215,10 +228,10 @@ fun ErrorHint(isError: Boolean) {
 private fun calculateCPM(met: Float, weight: Float): Float {
     return met * weight * 0.0175f
 }
+
 private fun calculateCT(cpm: Float, duration: Float): Float {
     return cpm * duration
 }
-
 
 
 private fun shareData(context: Context, message: String) {
