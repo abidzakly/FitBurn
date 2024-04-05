@@ -16,6 +16,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonColors
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,7 +39,6 @@ import org.d3if3139.assessment1.navigation.Screen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    val context = LocalContext.current
     val radioOptions =
         listOf(stringResource(id = R.string.male), stringResource(id = R.string.female))
     var gender by rememberSaveable { mutableStateOf(radioOptions[0]) }
@@ -79,7 +79,6 @@ fun HomeScreen(navController: NavHostController) {
                 } else {
                     genderId = 2
                 }
-                navController.popBackStack()
                 navController.navigate("${Screen.Dashboard.route}/$genderId")
             },
             modifier = Modifier.padding(top = 8.dp),
@@ -92,16 +91,19 @@ fun HomeScreen(navController: NavHostController) {
 
             Text(text = stringResource(R.string.enter))
         }
-        BackHandler(enabled = true) {
-            (context as Activity).finish()
-        }
     }
 }
 
 @Composable
 fun GenderOption(label: String, isSelected: Boolean, modifier: Modifier) {
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        RadioButton( selected = isSelected, onClick = null)
+        RadioButton(
+            selected = isSelected, onClick = null, colors = RadioButtonDefaults.colors(
+                selectedColor = colorResource(
+                    R.color.dark_purple
+                )
+            )
+        )
         Text(
             text = label,
             style = MaterialTheme.typography.bodyLarge,

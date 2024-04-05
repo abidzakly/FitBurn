@@ -8,6 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        multiDexEnabled = true
         applicationId = "org.d3if3139.assessment1"
         minSdk = 23
         targetSdk = 34

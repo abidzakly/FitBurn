@@ -14,8 +14,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,6 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +53,15 @@ fun DashboardScreen(navController: NavHostController, genderId: Int) {
     val context = LocalContext.current
     Scaffold(topBar = {
         TopAppBar(
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack, contentDescription = stringResource(
+                            R.string.back
+                        )
+                    )
+                }
+            },
             title = {
                 Text(text = stringResource(R.string.app_name))
             },
@@ -70,45 +84,31 @@ fun DashboardScreen(navController: NavHostController, genderId: Int) {
         )
     }
     ) { padding ->
-        ScreenContent(Modifier.padding(padding), genderId)
-    }
-}
+        val viewModel: DashboardViewModel = viewModel()
+        val data = viewModel.data
 
-@Composable
-fun ScreenContent(modifier: Modifier, genderId: Int) {
-    val navController = rememberNavController()
-    val viewModel: DashboardViewModel = viewModel()
-    val data = viewModel.data
-
-    if (genderId == 1 || genderId == 2) {
-        if (data.isEmpty()) {
-            ListEmpty(isEmpty = true)
-        } else {
-            LazyColumn(
-                modifier = modifier
-                    .fillMaxSize(),
-                contentPadding = PaddingValues(bottom = 84.dp)
-            ) {
-                items(data) {
-                    if (it.gender == genderId) {
-                        ItemCard(exerciseList = it, modifier = Modifier
-                            .padding(8.dp)
-                            .clickable {
-                                navController.navigate(
-                                    Screen.Workout.route.format(
-                                        it.type,
-                                        it.gender
-                                    )
-                                )
-                            })
+        if (genderId == 1 || genderId == 2) {
+            if (data.isEmpty()) {
+                ListEmpty(isEmpty = true)
+            } else {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize().padding(padding),
+                    contentPadding = PaddingValues(bottom = 84.dp)
+                ) {
+                    items(data) {
+                        if (it.gender == genderId) {
+                            ItemCard(exerciseList = it, modifier = Modifier
+                                .padding(8.dp).clickable { navController.navigate(
+                                    "${Screen.Workout.route}/${it.type}/${it.gender}") })
+                        }
                     }
                 }
             }
+        } else {
+            ListEmpty(isEmpty = true)
         }
-    } else {
-        ListEmpty(isEmpty = true)
     }
-
 }
 
 @Composable
@@ -133,7 +133,11 @@ fun ListEmpty(isEmpty: Boolean) {
 
 @Composable
 fun ItemCard(exerciseList: ExerciseList, modifier: Modifier) {
-    Card(modifier = modifier) {
+    Card(
+        modifier = modifier, colors = CardDefaults.cardColors(
+            containerColor = colorResource(R.color.lilac)
+        )
+    ) {
         Column {
             Image(
                 painter = painterResource(exerciseList.imageResourceId),

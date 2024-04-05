@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">FitBurn</string>
     <string name="about">About</string>
+    <string name="second">Second</string>
+    <string name="times">Times</string>
     <string name="app_description">Level up your fitness journey with FitBurn!\n
         The all-inclusive app designed for everyone!\n
         Whether you\'re a man or woman,\n
@@ -21,4 +23,66 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="gender_select">Please specify your gender</string>
+    <string name="finish">Finish</string>
+    <string name="calorie_title">Calorie Burn Calculator</string>
+
+<!--  Abs Workout Women  -->
+    <string name="abs_women_workout_1" translatable="false">Jumping Jacks</string>
+    <string name="abs_women_workout_2" translatable="false">Abdominal Crunches</string>
+    <string name="abs_women_workout_3" translatable="false">Russian Twist</string>
+    <string name="abs_women_workout_4" translatable="false">Mountain Climber</string>
+    <string name="abs_women_workout_5" translatable="false">Heel Touch</string>
+    <string name="abs_women_workout_6" translatable="false">Leg Raises</string>
+    <string name="abs_women_workout_7" translatable="false">Plank</string>
+    <string name="abs_women_workout_8" translatable="false">Abdominal Crunches</string>
+    <string name="abs_women_workout_9" translatable="false">Russian Twist</string>
+    <string name="abs_women_workout_10" translatable="false">Mountain Climber</string>
+    <string name="abs_women_workout_11" translatable="false">Heel Touch</string>
+    <string name="abs_women_workout_12" translatable="false">Leg Raises</string>
+    <string name="abs_women_workout_13" translatable="false">Plank</string>
+    <string name="abs_women_workout_14" translatable="false">Cobra Stretch</string>
+    <string name="abs_women_workout_15" translatable="false">Spine Lumbar Twist Stretch Left</string>
+    <string name="abs_women_workout_16" translatable="false">Spine Lumbar Twist Stretch Right</string>
+    <!--  Chest Workout Women  -->
+    <string name="chest_women_workout_1" translatable="false">Jumping Jacks</string>
+    <string name="chest_women_workout_2" translatable="false">Incline Push-Ups</string>
+    <string name="chest_women_workout_3" translatable="false">Push-Ups</string>
+    <string name="chest_women_workout_4" translatable="false">Wide Arm Push-Ups</string>
+    <string name="chest_women_workout_5" translatable="false">Triceps Dips</string>
+    <string name="chest_women_workout_6" translatable="false">Wide Arm Push-Ups</string>
+    <string name="chest_women_workout_7" translatable="false">Incline Push-Ups</string>
+    <string name="chest_women_workout_8" translatable="false">Triceps Dips</string>
+    <string name="chest_women_workout_9" translatable="false">Knee Push-Ups</string>
+    <string name="chest_women_workout_10" translatable="false">Cobra Stretch</string>
+    <string name="chest_women_workout_11" translatable="false">Chest Stretch</string>
+    <!--  Arm Workout Women  -->
+    <string name="arm_women_workout_1" translatable="false">Arm Raises</string>
+    <string name="arm_women_workout_2" translatable="false">Side Arm Raise</string>
+    <string name="arm_women_workout_3" translatable="false">Triceps Dips</string>
+    <string name="arm_women_workout_4" translatable="false">Arm Circles Clockwise</string>
+    <string name="arm_women_workout_5" translatable="false">Arm Circles CounterClockwise</string>
+    <string name="arm_women_workout_6" translatable="false">Diamond Push-Ups</string>
+    <string name="arm_women_workout_7" translatable="false">Jumping Jacks</string>
+    <string name="arm_women_workout_8" translatable="false">Chest Press Pulse</string>
+    <string name="arm_women_workout_9" translatable="false">Leg Barbell Curl Left</string>
+    <string name="arm_women_workout_10" translatable="false">Leg Barbell Curl Right</string>
+    <string name="arm_women_workout_11" translatable="false">Diagonal Plank</string>
+    <string name="arm_women_workout_12" translatable="false">Punches</string>
+    <string name="arm_women_workout_13" translatable="false">Push-Ups</string>
+    <string name="arm_women_workout_14" translatable="false">Inchworks</string>
+    <string name="arm_women_workout_15" translatable="false">Wall Push-Ups</string>
+    <string name="arm_women_workout_16" translatable="false">Triceps Stretch Left</string>
+    <string name="arm_women_workout_17" translatable="false">Triceps Stretch Right</string>
+    <string name="arm_women_workout_18" translatable="false">Standing Biceps Stretch Left</string>
+    <string name="arm_women_workout_19" translatable="false">Standing Biceps Stretch Right</string>
+    <string name="count_calorie">Count Calorie</string>
+    <string name="weight">Weight</string>
+    <string name="calorie_total">Calorie Burned🔥: %1$.2f</string>
+    <string name="duration">Exercise Duration</string>
+    <string name="input_invalid">Input Invalid</string>
+    <string name="share">Share</string>
+    <string name="share_template">MET: %1$s\nCalorie Per Minute🔥: %2$s cm\nDuration: %3$s seconds\n\nCalorie Burned🔥: %4$.2f\nWorkout Type: %5$s</string>
+    <string name="calculate">Calculate</string>
+    <string name="calorie_per_minute">Calorie Per Minute: %1$.2f</string>
+
 </resources>

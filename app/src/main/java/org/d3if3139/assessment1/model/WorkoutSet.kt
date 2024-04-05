@@ -2,10 +2,10 @@ package org.d3if3139.assessment1.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import java.util.Timer
 
 data class WorkoutSet(
-    val type: Int,
-    @StringRes val title: Int,
-    val gender: Int,
-    @DrawableRes val imageResourceId: Int
+    val typeId: Int,
+    val genderId: Int,
+    @StringRes val name: Int,
 )
