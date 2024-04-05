@@ -1,7 +1,24 @@
 <resources>
     <string name="app_name">FitBurn</string>
     <string name="about">About</string>
-    <string name="app_description">Level up your fitness journey with FitBurn, the all-inclusive app designed for everyone! Whether you\'re a man or woman, FitBurn empowers you to track your progress with ease. Calculate burned calories during workouts to stay motivated and measure results. Gain valuable body insights with the built-in Body Mass Index (BMI) calculator. Plus, keep your screen lit during exercise with the always-on option, ensuring a seamless workout experience. Download FitBurn today and unlock a healthier, happier you!</string>
+    <string name="app_description">Level up your fitness journey with FitBurn!\n
+        The all-inclusive app designed for everyone!\n
+        Whether you\'re a man or woman,\n
+        FitBurn empowers you to track your progress with ease.\n\n
+
+
+        <b>Features</b>\n
+        - Calculate burned calories during workouts to stay motivated and measure results.\n
+        - Gain valuable body insights with the built-in Body Mass Index (BMI) calculator.\n
+        - Plus, keep your screen lit during exercise with the always-on option, ensuring a seamless workout experience.\n
+        - Download FitBurn today and unlock a healthier, happier you! :D</string>
     <string name="back">Back</string>
     <string name="list_empty">List is Empty!</string>
+    <string name="enter">Enter</string>
+    <string name="abs_exercise">Abs Exercise</string>
+    <string name="arm_exercise">Arm Exercise</string>
+    <string name="chest_exercise">Chest Exercise</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="gender_select">Please specify your gender</string>
 </resources>
