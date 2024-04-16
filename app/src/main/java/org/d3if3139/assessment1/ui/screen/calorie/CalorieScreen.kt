@@ -1,11 +1,11 @@
 package org.d3if3139.assessment1.ui.screen.calorie
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,13 +16,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -30,7 +31,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -51,7 +51,9 @@ fun CalorieScreen(navController: NavController, typeId: Int, genderId: Int) {
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
-                IconButton(onClick = { navController.popBackStack() }) {
+                IconButton(onClick = { navController.popBackStack() }, colors = IconButtonDefaults.iconButtonColors(contentColor = colorResource(
+                    id = R.color.dark_purple
+                ))) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack, contentDescription = stringResource(
                             R.string.back
@@ -86,18 +88,17 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
     var category by rememberSaveable { mutableStateOf("") }
     var gender by rememberSaveable { mutableStateOf("") }
 
-    when {
-        typeId == 1 -> category = "Abs Workout"
-        typeId == 2 -> category = "Chest Workout"
-        typeId == 3 -> category = "Arm Workout"
+    when (typeId) {
+        1 -> category = "Abs Workout"
+        2 -> category = "Chest Workout"
+        3 -> category = "Arm Workout"
     }
-    when {
-        genderId == 1 -> {
+    when (genderId) {
+        1 -> {
             gender = "Men"
             met = 3.5f
         }
-
-        genderId == 2 -> {
+        2 -> {
             gender = "Women"
             met = 3.0f
         }
@@ -156,11 +157,12 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
                 durationError = (duration == "" || duration == "0")
                 if (weightError || durationError) return@Button
 
-                caloriePerMinute = calculateCPM(met.toFloat(), weight.toFloat())
-                calorieTotal = calculateCT(caloriePerMinute.toFloat(), duration.toFloat())
+                caloriePerMinute = calculateCPM(met, weight.toFloat())
+                calorieTotal = calculateCT(caloriePerMinute, duration.toFloat())
             },
             modifier = Modifier.padding(top = 8.dp),
-            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp), colors = ButtonDefaults.buttonColors(containerColor =
+                colorResource(id = R.color.lilac), contentColor = colorResource(id = R.color.dark_purple))
         ) {
             Text(text = stringResource(R.string.calculate))
         }
@@ -168,11 +170,11 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
             Divider(modifier = Modifier.padding(vertical = 8.dp), thickness = 1.dp)
             Text(
                 text = stringResource(R.string.calorie_per_minute, caloriePerMinute),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.labelLarge
             )
             Text(
                 text = stringResource(R.string.calorie_total, calorieTotal),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.labelLarge
             )
             Button(
                 onClick = {
@@ -184,7 +186,7 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
                             caloriePerMinute.toString(),
                             duration,
                             calorieTotal,
-                            category + " " + gender
+                            "$category $gender"
                         )
                     )
                 },
@@ -194,18 +196,6 @@ fun ScreenContent(modifier: Modifier, typeId: Int, genderId: Int) {
                 Text(text = stringResource(R.string.share))
             }
         }
-    }
-}
-
-@Composable
-fun GenderOption(label: String, isSelected: Boolean, modifier: Modifier) {
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(selected = isSelected, onClick = null)
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(8.dp)
-        )
     }
 }
 
@@ -234,6 +224,7 @@ private fun calculateCT(cpm: Float, duration: Float): Float {
 }
 
 
+@SuppressLint("QueryPermissionsNeeded")
 private fun shareData(context: Context, message: String) {
     val shareIntent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"

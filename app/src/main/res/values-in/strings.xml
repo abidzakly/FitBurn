@@ -4,7 +4,7 @@
     <string name="about">Tentang</string>
     <string name="second">Detik</string>
     <string name="times">Kali</string>
-    <string name="app_description">Tingkatkan perjalanan kebugaran Anda dengan FitBurn!          Aplikasi lengkap yang dirancang untuk semua orang!          Apakah Anda seorang pria atau wanita,          FitBurn memberdayakan Anda untuk melacak kemajuan Anda dengan mudah.             <b>Fitur</b>          - Hitung kalori yang terbakar selama latihan untuk tetap termotivasi dan mengukur hasil.          - Dapatkan wawasan tubuh yang berharga dengan kalkulator Indeks Massa Tubuh (BMI) bawaan.          - Plus, jaga layar Anda tetap menyala selama berolahraga dengan opsi selalu aktif, memastikan pengalaman berolahraga yang lancar.          - Unduh FitBurn hari ini dan buka diri Anda yang lebih sehat dan bahagia! :D</string>
+    <string name="app_description">Tingkatkan perjalanan kebugaran Anda dengan FitBurn!\\n         Aplikasi lengkap yang dirancang untuk semua orang!\\n         Baik Anda pria atau wanita,\\n         FitBurn memberdayakan Anda untuk melacak kemajuan Anda dengan mudah.\\n\\n          Fitur\\n         - Hitung kalori yang terbakar selama latihan agar tetap termotivasi dan mengukur hasil.\\n</string>
     <string name="back">Kembali</string>
     <string name="list_empty">List Kosong!</string>
     <string name="enter">Masuk</string>
@@ -22,7 +22,7 @@
     <string name="duration">Durasi Latihan</string>
     <string name="input_invalid">Input tidak sesuai</string>
     <string name="share">Bagikan</string>
-    <string name="share_template">MET: %1$s \\\\nKalori Per Menit🔥: %2$s cm\\\\nDurasi: %3$s\\\\n\\\\nKalori yang Terbakar🔥: %4$.2f\\\\n%5$s</string>
+    <string name="share_template">MET: %1$s\\nKalori Per Menit🔥: %2$s \\nDurasi: %3$s detik\\n\\nKalori yang Terbakar🔥: %4$.2f\\nJenis Latihan: %5$s</string>
     <string name="calculate">Hitung</string>
     <string name="calorie_per_minute">Kalori Per Menit: %1$.2f</string>
 </resources>

@@ -6,7 +6,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -25,7 +25,9 @@ fun AboutScreen(navController: NavHostController) {
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
-                IconButton(onClick = { navController.popBackStack() }) {
+                IconButton(onClick = { navController.popBackStack() }, colors = IconButtonDefaults.iconButtonColors(contentColor = colorResource(
+                    id = R.color.dark_purple
+                ))) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack, contentDescription = stringResource(
                             R.string.back

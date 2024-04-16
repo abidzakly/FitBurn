@@ -17,17 +17,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,13 +35,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import org.d3if3139.assessment1.R
 import org.d3if3139.assessment1.model.ExerciseList
 import org.d3if3139.assessment1.navigation.Screen
@@ -54,7 +51,14 @@ fun DashboardScreen(navController: NavHostController, genderId: Int) {
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
-                IconButton(onClick = { navController.popBackStack() }) {
+                IconButton(
+                    onClick = { navController.popBackStack() },
+                    colors = IconButtonDefaults.iconButtonColors(
+                        contentColor = colorResource(
+                            id = R.color.dark_purple
+                        )
+                    )
+                ) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack, contentDescription = stringResource(
                             R.string.back
@@ -93,14 +97,20 @@ fun DashboardScreen(navController: NavHostController, genderId: Int) {
             } else {
                 LazyColumn(
                     modifier = Modifier
-                        .fillMaxSize().padding(padding),
+                        .fillMaxSize()
+                        .padding(padding),
                     contentPadding = PaddingValues(bottom = 84.dp)
                 ) {
                     items(data) {
                         if (it.gender == genderId) {
-                            ItemCard(exerciseList = it, modifier = Modifier
-                                .padding(8.dp).clickable { navController.navigate(
-                                    "${Screen.Workout.route}/${it.type}/${it.gender}") })
+                            ItemCard(
+                                exerciseList = it, modifier = Modifier
+                                    .padding(8.dp)
+                            ) {
+                                navController.navigate(
+                                    "${Screen.Workout.route}/${it.type}/${it.gender}"
+                                )
+                            }
                         }
                     }
                 }
@@ -131,9 +141,11 @@ fun ListEmpty(isEmpty: Boolean) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ItemCard(exerciseList: ExerciseList, modifier: Modifier) {
+fun ItemCard(exerciseList: ExerciseList, modifier: Modifier, onClick: () -> Unit) {
     Card(
+        onClick = onClick,
         modifier = modifier, colors = CardDefaults.cardColors(
             containerColor = colorResource(R.color.lilac)
         )

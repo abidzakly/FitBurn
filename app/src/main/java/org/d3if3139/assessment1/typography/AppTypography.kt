@@ -10,14 +10,14 @@ import androidx.compose.ui.unit.sp
 import org.d3if3139.assessment1.R
 
 object AppTypography {
-    val provider = GoogleFont.Provider(
+    private val provider = GoogleFont.Provider(
         providerAuthority = "com.google.android.gms.fonts",
         providerPackage = "com.google.android.gms",
         certificates = R.array.com_google_android_gms_fonts_certs
     )
-    val fontName = GoogleFont("Poppins")
+    private val fontName = GoogleFont("Poppins")
 
-    val fontFamily = FontFamily(
+    private val fontFamily = FontFamily(
         Font(googleFont = fontName, fontProvider = provider)
     )
 

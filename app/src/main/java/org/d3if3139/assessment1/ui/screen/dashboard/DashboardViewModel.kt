@@ -6,9 +6,9 @@ import org.d3if3139.assessment1.model.ExerciseList
 
 class DashboardViewModel : ViewModel() {
 
-    val data = getExcerciseList()
+    val data = getExerciseList()
 
-    private fun getExcerciseList(): List<ExerciseList> {
+    private fun getExerciseList(): List<ExerciseList> {
         val data = mutableListOf<ExerciseList>()
         data.add(ExerciseList(1, R.string.abs_exercise, 1, R.drawable.abs_men))
         data.add(ExerciseList(2, R.string.chest_exercise, 1, R.drawable.chest_men))
